@@ -1,0 +1,126 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CPMToken</title>
+    <style type="text/css" xml:space="preserve">
+        BODY, P, TD
+        {
+            font-family: Verdana;
+            font-size: 10pt;
+        }
+        A
+        {
+            font-family: Verdana;
+        }
+        B
+        {
+            font-family: Verdana;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+        function ftnInicio() {
+            document.getElementById("txtToken").focus;
+        }
+        function isNumber(event) {
+            if (event) {
+                var charCode = (event.which) ? event.which : event.keyCode;
+                if (charCode != 190 && charCode > 31 &&
+                    (charCode < 48 || charCode > 57) &&
+                    (charCode < 96 || charCode > 105) &&
+                    (charCode < 37 || charCode > 40) &&
+                    charCode != 110 && charCode != 8 && charCode != 46)
+                return false;
+            }
+            return true;
+        }
+        function ftnCodigo() {
+            if (document.getElementById("txtToken").value == "") {
+                alert("Favor de capturar un Número válido");
+                document.getElementById("txtCodigo").value = "";
+            }
+            else {
+                var token = document.getElementById("txtToken").value;
+                token = (token * 5 / 4 * 3.14);
+                var intToken = parseInt(token);
+                var entToken = intToken.toString().length;
+                var strToken = intToken.toString();
+
+                if (entToken <= 9) {
+                    document.getElementById("txtCodigo").value = strToken.substring(0, entToken);
+                }
+                else {
+                    document.getElementById("txtCodigo").value = strToken.substring(0, 10);
+                }
+            }                        
+        } 
+    </script>
+</head>
+<body onload="ftnInicio()">
+    <form action="" name="myform" id="myform">
+    <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="20" rowspan="7" valign="top">
+                </td>
+                <td height="50" colspan="2" valign="middle" bgcolor="#2A7204" style="color: #FFFFFF;
+                    font-size: large;">
+                    • CPMToken •
+                </td>
+            </tr>
+            <tr>
+                <td height="3" valign="top">
+                </td>
+                <td valign="top">
+                </td>
+            </tr>
+            <tr>
+                <td height="20" valign="top">
+                    • Token
+                </td>
+                <td valign="top">
+                    <input type="text" onkeydown="return isNumber(event);" id="txtToken" 
+                        style="width:100px; text-align:center;" tabindex="0" />
+                </td>
+            </tr>
+            <tr>
+                <td height="3" valign="top">
+                </td>
+                <td valign="top">
+                </td>
+            </tr>
+            <tr>
+                <td width="80" height="20" valign="top">
+                    • Código
+                </td>
+                <td valign="top">
+                    <input type="text" id="txtCodigo" style="width:100px; text-align:center;" 
+                        tabindex="1" />
+                </td>
+            </tr>
+            <tr>
+                <td height="3" valign="top">
+                </td>
+                <td valign="top">
+                </td>
+            </tr>
+            <tr>
+                <td height="20" valign="top">
+                </td>
+                <td valign="top">
+                    <input id="btnGenerar" type="button" value="Generar" onclick="ftnCodigo()" 
+                        style="background-color: #2A7204; color: #FFFFFF; width:105px" tabindex="2" />
+                </td>
+            </tr>
+            <tr>
+                <td height="20" valign="top">
+                </td>
+                <td valign="top">
+                </td>
+            </tr>
+        </table>    
+    </form>    
+</body>
+</html>
